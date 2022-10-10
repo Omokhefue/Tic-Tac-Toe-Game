@@ -1,0 +1,148 @@
+*,*::before,*::after{
+box-sizing: border-box;
+}
+body{
+    margin:0;
+    padding: 0;
+}
+.board{
+    width:100vw;
+    height:100vh;
+    display:grid ;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3,100px);
+    grid-template-rows: repeat(3,100px);
+}
+.cell{
+    position: relative;
+    height:100px;
+    width:100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.cell.x,
+.cell.circle{
+    cursor: not-allowed;
+}
+
+.top{
+    border-top: none;
+}
+.right{
+    border-right: none;
+}
+.bottom{
+    border-bottom:none;
+}
+.left{
+    border-left: none;
+}
+
+.cell.x::before,
+.cell.x::after{
+     background-color: black;
+}
+.board.x .cell:not(.circle):not(.x):hover::before,
+.board.x .cell:not(.circle):not(.x):hover::after{
+    background-color: lightgrey;
+}
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after
+{
+    content: '';
+    width:13.5px;
+    position: absolute;
+    height:90px;
+}
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after{
+transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after {
+background-color: black;
+}
+
+.board.circle .cell:not(.circle):not(.x):hover::before,
+.board.circle .cell:not(.circle):not(.x):hover::after {
+    background-color: lightgrey;
+}
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after{
+    content: '';
+    width:90px;
+    position: absolute;
+    height:90px;
+    border-radius: 50%;
+}
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    width:90px;
+    height:90px;
+}
+ .cell.circle::after,
+ .board.circle .cell:not(.x):not(.circle):hover::after{
+   width:63px;
+   height:63px;
+   background-color: white;
+}
+.winning-message{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-size: 5rem;
+}
+
+.winning-message button{
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .2em .5em;
+    cursor: pointer;
+}
+
+.winning-message button:hover{
+    background-color: black;
+    color:white;
+    border-color: white;
+}
+.winning-message.active{
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
